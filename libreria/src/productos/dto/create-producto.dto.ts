@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
+import { IsDateString, IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
 
 export class CreateProductoDto {
     @ApiProperty()
@@ -12,6 +12,12 @@ export class CreateProductoDto {
     @IsNotEmpty({ message: 'El campo precio no debe ser vacio' })
     @IsNumber({}, { message: 'El campo precio debe ser de tipo numerico' })
     readonly precio: number;
+
+    @ApiProperty()
+    @IsNotEmpty({ message: 'El campo unidadMonetaria no debe ser vacio' })
+    @IsString({ message: 'El campo unidadMonetaria debe ser de tipo cadena' })
+    @MaxLength(10, { message: 'El campo unidadMonetaria no debe ser mayor a 10 caracteres' })
+    readonly unidadMonetaria: string;
 
     @ApiProperty()
     @IsNotEmpty({ message: 'El campo codigo no debe ser vacio' })

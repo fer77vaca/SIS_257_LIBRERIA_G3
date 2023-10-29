@@ -11,11 +11,12 @@ export class ProductosService {
     @InjectRepository(Producto)
     private productoRepository: Repository<Producto>,
   ) {}
-// Codigo para crear
+// CREAR
   async create(createProductoDto: CreateProductoDto): Promise<Producto> {
     const existeProducto = await this.productoRepository.findOneBy({ 
       nombre: createProductoDto.nombre,
       precio: createProductoDto.precio,
+      unidadMonetaria: createProductoDto.unidadMonetaria,
       codigo: createProductoDto.codigo,
       descripcion: createProductoDto.descripcion
      });
@@ -26,15 +27,16 @@ export class ProductosService {
     return this.productoRepository.save({
       nombre: createProductoDto.nombre.trim(),
       precio: createProductoDto.precio,
+      unidadMonetaria: createProductoDto.unidadMonetaria.trim(),
       codigo: createProductoDto.codigo.trim(),
       descripcion: createProductoDto.descripcion.trim()
     });
   }
-  // Para obtener o encontrar todos los productos
+  // OBTENER TODOS LOS PRODUCTOS
   findAll(): Promise<Producto[]> {
     return this.productoRepository.find({ relations: ['categoria'] });
   }
-  // Para obtener un pproducto por un id
+  // OBTENER POR UN id
   async findOne(id: number): Promise<Producto> {
     const producto = await this.productoRepository.findOneBy({ id });
     if (!producto) {
@@ -42,7 +44,7 @@ export class ProductosService {
     }
     return producto;
   }
-  // Para actualizar 
+  // ACTUALIZAR 
   async update(id: number, updateProductoDto: UpdateProductoDto): Promise<Producto> {
     const producto = await this.productoRepository.findOneBy({ id });
     if (!producto) {
@@ -51,7 +53,7 @@ export class ProductosService {
     const productoUpdate = Object.assign(producto, updateProductoDto);
     return this.productoRepository.save(productoUpdate);
   }
-  // Para eliminiar
+  // ELIMINAR
   async remove(id: number) {
     const producto = await this.productoRepository.findOneBy({ id });
     if (!producto) {
