@@ -9,6 +9,8 @@ import { Venta } from './ventas/entities/venta.entity';
 import { ConfigModule } from '@nestjs/config';
 import { CategoriasModule } from './categorias/categorias.module';
 import { Categoria } from './categorias/entities/categoria.entity';
+import { DetallesModule } from './detalles/detalles.module';
+import { Detalle } from './detalles/entities/detalle.entity';
 
 @Module({
   imports: [
@@ -20,13 +22,14 @@ import { Categoria } from './categorias/entities/categoria.entity';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Producto, Venta, Categoria], 
+      entities: [Producto, Venta, Categoria, Detalle], 
       synchronize: true,
       autoLoadEntities: true,
     }),
     ProductosModule,
     VentasModule,
     CategoriasModule,
+    DetallesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

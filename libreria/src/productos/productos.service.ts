@@ -11,7 +11,7 @@ export class ProductosService {
     @InjectRepository(Producto)
     private productoRepository: Repository<Producto>,
   ) {}
-// CREAR
+// CREAR PRODUCTOS
   async create(createProductoDto: CreateProductoDto): Promise<Producto> {
     const existeProducto = await this.productoRepository.findOneBy({ 
       nombre: createProductoDto.nombre,

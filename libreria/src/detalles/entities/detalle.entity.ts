@@ -1,12 +1,15 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-@Entity('ventas')
-export class Venta {
+@Entity('detalles')
+export class Detalle {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ name: 'fecha_venta', type: 'date' })
-    fechaVenta: Date;
+    @Column({ name: 'cantidad', type: 'int' })
+    cantidad: number;
+
+    @Column({ name: 'precio_unitario', type: 'int' })
+    precioUnitario: number;
 
     @CreateDateColumn({ name: 'fecha_creacion' })
     fechaCreacion: Date;
