@@ -11,6 +11,10 @@ import { CategoriasModule } from './categorias/categorias.module';
 import { Categoria } from './categorias/entities/categoria.entity';
 import { DetallesModule } from './detalles/detalles.module';
 import { Detalle } from './detalles/entities/detalle.entity';
+import { ClientesModule } from './clientes/clientes.module';
+import { Cliente } from './clientes/entities/cliente.entity';
+import { UsuariosModule } from './usuarios/usuarios.module';
+import { Usuario } from './usuarios/entities/usuario.entity';
 
 @Module({
   imports: [
@@ -22,7 +26,7 @@ import { Detalle } from './detalles/entities/detalle.entity';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Producto, Venta, Categoria, Detalle], 
+      entities: [Producto, Venta, Categoria, Detalle, Cliente, Usuario], 
       synchronize: true,
       autoLoadEntities: true,
     }),
@@ -30,6 +34,8 @@ import { Detalle } from './detalles/entities/detalle.entity';
     VentasModule,
     CategoriasModule,
     DetallesModule,
+    ClientesModule,
+    UsuariosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
