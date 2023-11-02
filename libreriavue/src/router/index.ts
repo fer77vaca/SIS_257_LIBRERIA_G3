@@ -39,9 +39,59 @@ const router = createRouter({
           component: () => import('../components/usuario/UsuarioEdit.vue')
         }
       ]
-    }
+    },
+    {
+      path: '/clientes',
+      name: 'clientes',
+      component: () => import('../views/ClienteView.vue'),
+      children: [
+        { path: '', component: () => import('../components/cliente/ClienteList.vue') },
+        { path: 'crear', component: () => import('../components/cliente/ClienteCreate.vue') },        {
+          path: 'editar/:id',
+          component: () => import('../components/cliente/ClienteEdit.vue')
+        }
+      ]
+    },
+    {
+      path: '/ventas',
+      name: 'ventas',
+      component: () => import('../views/VentaView.vue'),
+      children: [
+        { path: '', component: () => import('../components/venta/VentaList.vue') },
+        { path: 'crear', component: () => import('../components/venta/VentaCreate.vue') },        {
+          path: 'editar/:id',
+          component: () => import('../components/venta/VentaEdit.vue')
+        }
+      ]
+    },
+    {
+      path: '/categorias',
+      name: 'categorias',
+      component: () => import('../views/CategoriaView.vue'),
+      children: [
+        { path: '', component: () => import('../components/categoria/CategoriaList.vue') },
+        { path: 'crear', component: () => import('../components/categoria/CategoriaCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/categoria/CategoriaEdit.vue')
+        }
+      ]
+    },
+    {
+      path: '/detalles',
+      name: 'detalles',
+      component: () => import('../views/DetalleView.vue'),
+      children: [
+        { path: '', component: () => import('../components/detalle/DetalleList.vue') },
+        { path: 'crear', component: () => import('../components/detalle/DetalleCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/detalle/DetalleEdit.vue')
+        }
+      ]
+    },
     
-  ]
+  ] 
 })
 
 export default router
