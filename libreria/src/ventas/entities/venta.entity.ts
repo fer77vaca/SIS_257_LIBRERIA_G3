@@ -1,10 +1,12 @@
 import { Cliente } from 'src/clientes/entities/cliente.entity';
+import { Detalle } from 'src/detalles/entities/detalle.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -26,4 +28,7 @@ export class Venta {
   @ManyToOne(() => Cliente, (cliente) => cliente.ventas)
   @JoinColumn({ name: 'id_cliente', referencedColumnName: 'id' })
   cliente: Cliente;
+
+  @OneToMany(() => Detalle, (detalle) => detalle.venta)
+  detalles: Detalle;
 }
