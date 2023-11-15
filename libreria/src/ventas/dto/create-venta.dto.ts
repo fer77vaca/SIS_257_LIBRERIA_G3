@@ -3,6 +3,7 @@ import {
   IsDateString,
   IsDefined,
   IsNotEmpty,
+  IsNumber,
   IsString,
   MaxLength,
 } from 'class-validator';
@@ -20,4 +21,14 @@ export class CreateVentaDto {
   @IsDefined({ message: 'El campo fecha debe estar definido' })
   @IsDateString({}, { message: 'El campo fecha debe ser de tipo fecha' })
   readonly fecha: Date;
+
+  @ApiProperty()
+  @IsDefined({ message: 'El campo idUsuario debe estar definido' })
+  @IsNumber({}, { message: 'El campo idUsuario debe ser de tipo numerico' })
+  readonly idUsuario: number;
+
+  @ApiProperty()
+  @IsDefined({ message: 'El campo idCliente debe estar definido' })
+  @IsNumber({}, { message: 'El campo idCliente debe ser de tipo numerico' })
+  readonly idCliente: number;
 }

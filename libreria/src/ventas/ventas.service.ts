@@ -18,6 +18,8 @@ export class VentasService {
   // CREAR
   async create(createVentaDto: CreateVentaDto): Promise<Venta> {
     const existeVenta = await this.ventaRepository.findOneBy({
+      idUsuario: createVentaDto.idUsuario,
+      idCliente: createVentaDto.idCliente,
       transaccion: createVentaDto.transaccion.trim(),
     });
 
@@ -30,15 +32,22 @@ export class VentasService {
     return this.ventaRepository.save({
       transaccion: createVentaDto.transaccion.trim(),
       fecha: createVentaDto.fecha,
+      idUsuario: createVentaDto.idUsuario,
+      idCliente: createVentaDto.idCliente,
     });
   }
   // OBTENER TODAS LAS VENTAS
   async findAll(): Promise<Venta[]> {
-    return this.ventaRepository.find();
+    return this.ventaRepository.find({
+      relations: { usuario: true, cliente: true },
+    });
   }
   // OBTENER POR UN id
   async findOne(id: number): Promise<Venta> {
-    const venta = await this.ventaRepository.findOneBy({ id });
+    const venta = await this.ventaRepository.findOne({
+      where: { id },
+      relations: { usuario: true, cliente: true },
+    });
 
     if (!venta) {
       throw new NotFoundException(`La venta ${id} no existe.`);

@@ -49,8 +49,9 @@ export class DetallesService {
       where: { id },
       relations: { venta: true, producto: true },
     });
+
     if (!detalle) {
-      throw new NotFoundException(`No existe el detalle ${id}`);
+      throw new NotFoundException(`El detalle ${id} no existe.`);
     }
     return detalle;
   }
@@ -62,8 +63,9 @@ export class DetallesService {
     const detalle = await this.detalleRepository.findOneBy({ id });
 
     if (!detalle) {
-      throw new NotFoundException(`No existe el detalle ${id}`);
+      throw new NotFoundException(`El detalle ${id} no existe.`);
     }
+
     const detalleUpdate = Object.assign(detalle, updateDetalleDto);
     return this.detalleRepository.save(detalleUpdate);
   }
@@ -72,7 +74,7 @@ export class DetallesService {
     const existeDetalle = await this.detalleRepository.findOneBy({ id });
 
     if (!existeDetalle) {
-      throw new NotFoundException(`No existe el detalle ${id}`);
+      throw new NotFoundException(`El detalle ${id} no existe.`);
     }
 
     return this.detalleRepository.delete(id);

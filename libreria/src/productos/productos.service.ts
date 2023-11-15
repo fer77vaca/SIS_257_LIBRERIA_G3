@@ -41,11 +41,16 @@ export class ProductosService {
   }
   // OBTENER TODOS LOS PRODUCTOS
   async findAll(): Promise<Producto[]> {
-    return this.productoRepository.find({ relations: ['categoria'] });
+    return this.productoRepository.find({
+      relations: { categoria: true, unidad: true },
+    });
   }
   // OBTENER POR UN id
   async findOne(id: number): Promise<Producto> {
-    const producto = await this.productoRepository.findOneBy({ id });
+    const producto = await this.productoRepository.findOne({
+      where: { id },
+      relations: { categoria: true, unidad: true },
+    });
 
     if (!producto) {
       throw new NotFoundException(`El producto ${id} no existe.`);

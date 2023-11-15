@@ -28,9 +28,6 @@ export class Cliente {
   @Column({ type: 'varchar', length: 200, nullable: false })
   direccion: string;
 
-  @Column({ type: 'varchar', length: 100, nullable: true })
-  email: string;
-
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
 
