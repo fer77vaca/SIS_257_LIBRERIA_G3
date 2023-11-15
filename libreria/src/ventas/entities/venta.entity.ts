@@ -16,8 +16,11 @@ export class Venta {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'fecha_venta', type: 'date' })
-  fechaVenta: Date;
+  @Column({ length: 20 })
+  transaccion: string;
+
+  @Column()
+  fecha: Date;
 
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;

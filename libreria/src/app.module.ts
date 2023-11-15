@@ -15,10 +15,12 @@ import { ClientesModule } from './clientes/clientes.module';
 import { Cliente } from './clientes/entities/cliente.entity';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { Usuario } from './usuarios/entities/usuario.entity';
+import { UnidadesModule } from './unidades/unidades.module';
+import { Unidad } from './unidades/entities/unidad.entity';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(), 
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: process.env.DB_TYPE as any,
       host: process.env.DB_HOST,
@@ -26,7 +28,7 @@ import { Usuario } from './usuarios/entities/usuario.entity';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Producto, Venta, Categoria, Detalle, Cliente, Usuario], 
+      entities: [Producto, Venta, Categoria, Detalle, Cliente, Usuario, Unidad],
       synchronize: true,
       autoLoadEntities: true,
     }),
@@ -36,6 +38,7 @@ import { Usuario } from './usuarios/entities/usuario.entity';
     DetallesModule,
     ClientesModule,
     UsuariosModule,
+    UnidadesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

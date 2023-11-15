@@ -1,4 +1,8 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
@@ -14,53 +18,55 @@ export class UsuariosService {
   // CREAR USUARIOS
   async create(createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
     const existeUsuario = await this.usuarioRepository.findOneBy({
-      nombre: createUsuarioDto.nombre,
-      dni: createUsuarioDto.dni,
-      direccion: createUsuarioDto.direccion,
-      telefono: createUsuarioDto.telefono,
-      cargo: createUsuarioDto.cargo,
-      email: createUsuarioDto.email
+      usuario: createUsuarioDto.usuario.trim(),
     });
 
     if (existeUsuario) {
-      throw new ConflictException('El usuario ya existe');
+      throw new ConflictException(
+        `El usuario ${createUsuarioDto.usuario} ya existe.`,
+      );
     }
+
     return this.usuarioRepository.save({
-      nombre: createUsuarioDto.nombre.trim(),
-      dni: createUsuarioDto.dni,
-      direccion: createUsuarioDto.direccion.trim(),
-      telefono: createUsuarioDto.telefono,
-      cargo: createUsuarioDto.cargo.trim(),
-      email: createUsuarioDto.email.trim()
+      email: createUsuarioDto.email.trim(),
     });
   }
   // OBTENER TODOS LOS USUARIOS
-  findAll(): Promise<Usuario[]> {
+  async findAll(): Promise<Usuario[]> {
     return this.usuarioRepository.find();
   }
   // OBTENER POR UN id
   async findOne(id: number): Promise<Usuario> {
     const usuario = await this.usuarioRepository.findOneBy({ id });
+
     if (!usuario) {
-      throw new NotFoundException(`No existe el usuario ${id}`)
+      throw new NotFoundException(`El usuario ${id} no existe.`);
     }
+
     return usuario;
   }
   // ACTUALIZAR
-  async update(id: number, updateUsuarioDto: UpdateUsuarioDto): Promise<Usuario> {
+  async update(
+    id: number,
+    updateUsuarioDto: UpdateUsuarioDto,
+  ): Promise<Usuario> {
     const usuario = await this.usuarioRepository.findOneBy({ id });
+
     if (!usuario) {
-      throw new NotFoundException(`No existe el usuario ${id}`)
+      throw new NotFoundException(`El usuario ${id} no existe.`);
     }
+
     const usuarioUpdate = Object.assign(usuario, updateUsuarioDto);
     return this.usuarioRepository.save(usuarioUpdate);
   }
   // ELIMINAR
   async remove(id: number) {
     const usuario = await this.usuarioRepository.findOneBy({ id });
+
     if (!usuario) {
-      throw new NotFoundException(`No existe el usuario ${id}`)
+      throw new NotFoundException(`El usuario ${id} no existe.`);
     }
+
     return this.usuarioRepository.delete(id);
   }
 }

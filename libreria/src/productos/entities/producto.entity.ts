@@ -16,25 +16,26 @@ export class Producto {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 50, nullable: false })
-  nombre: string;
+  @Column({ name: 'id_categoria' })
+  idCategoria: number;
 
-  @Column({ name: 'Precio', type: 'int' })
-  precio: number;
-
-  @Column({
-    name: 'unidad_monetaria',
-    type: 'varchar',
-    length: 10,
-    nullable: false,
-  })
-  unidadMonetaria: string;
-
-  @Column({ type: 'varchar', length: 10, nullable: false })
+  @Column({ length: 10 })
   codigo: string;
 
   @Column({ type: 'varchar', length: 100, nullable: false })
   descripcion: string;
+
+  @Column({ name: 'id_unidad' })
+  idUnidad: number;
+
+  @Column()
+  precio: number;
+
+  @Column({ name: 'existencia_producto' })
+  existenciaProducto: number;
+
+  @Column({ name: 'url_imagen', length: 5000 })
+  urlImagen: string;
 
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;

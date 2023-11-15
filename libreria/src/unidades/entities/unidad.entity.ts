@@ -6,25 +6,13 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('usuarios')
-export class Usuario {
+@Entity('unidades')
+export class Unidad {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 20 })
-  usuario: string;
-
-  @Column({ length: 150, select: false })
-  clave: string;
-
-  @Column({ type: 'varchar', length: 100, nullable: false })
-  email: string;
-
-  @Column({ length: 20 })
-  rol: string;
-
-  @Column()
-  premium: boolean;
+  @Column({ length: 30 })
+  descripcion: string;
 
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
