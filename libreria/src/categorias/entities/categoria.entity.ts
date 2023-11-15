@@ -1,26 +1,27 @@
- import { Producto } from "src/productos/entities/producto.entity";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Producto } from 'src/productos/entities/producto.entity';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('categorias')
 export class Categoria {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({ type: 'varchar', length: 50, nullable: false })
-    nombre: string;
+  @Column({ type: 'varchar', length: 200, nullable: false })
+  descripcion: string;
 
-    @Column({ type: 'varchar', length: 50, nullable: false })
-    marca: string;
+  @CreateDateColumn({ name: 'fecha_creacion' })
+  fechaCreacion: Date;
 
-    @Column({ type: 'varchar', length: 200, nullable: false })
-    descripcion: string;
+  @UpdateDateColumn({ name: 'fecha_modificacion' })
+  fechaModificacion: Date;
 
-    @CreateDateColumn({ name: 'fecha_creacion' })
-    fechaCreacion: Date;
-
-    @UpdateDateColumn({ name: 'fecha_modificacion' })
-    fechaModificacion: Date;
-
-    @OneToMany(() => Producto, (producto) => producto.categoria)
-    productos: Producto
+  @OneToMany(() => Producto, (producto) => producto.categoria)
+  productos: Producto[];
 }

@@ -1,4 +1,8 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateCategoriaDto } from './dto/create-categoria.dto';
 import { UpdateCategoriaDto } from './dto/update-categoria.dto';
 import { Categoria } from './entities/categoria.entity';
@@ -14,19 +18,15 @@ export class CategoriasService {
   // CREAR -->> nombre marca descripcion
   async create(createCategoriaDto: CreateCategoriaDto): Promise<Categoria> {
     const existeCategoria = await this.categoriaRepository.findOneBy({
-      nombre: createCategoriaDto.nombre,
-      marca: createCategoriaDto.marca,
-      descripcion: createCategoriaDto.descripcion
-    })
+      descripcion: createCategoriaDto.descripcion,
+    });
 
-  if (existeCategoria){
-    throw new ConflictException('La categoria ya existe')
-  }
-  return this.categoriaRepository.save({
-    nombre: createCategoriaDto.nombre.trim(),
-    marca: createCategoriaDto.marca.trim(),
-    descripcion: createCategoriaDto.descripcion.trim()
-  });
+    if (existeCategoria) {
+      throw new ConflictException('La categoria ya existe');
+    }
+    return this.categoriaRepository.save({
+      descripcion: createCategoriaDto.descripcion.trim(),
+    });
   }
   // OBTENER TODAS LAS CATEGORIA
   findAll(): Promise<Categoria[]> {
@@ -41,10 +41,13 @@ export class CategoriasService {
     return categoria;
   }
   // ACTUALIZAR
-  async update(id: number, updateCategoriaDto: UpdateCategoriaDto): Promise<Categoria> {
+  async update(
+    id: number,
+    updateCategoriaDto: UpdateCategoriaDto,
+  ): Promise<Categoria> {
     const categoria = await this.categoriaRepository.findOneBy({ id });
     if (!categoria) {
-      throw new NotFoundException(`No existe la categoria ${id}`)
+      throw new NotFoundException(`No existe la categoria ${id}`);
     }
     const categoriaUpdate = Object.assign(categoria, updateCategoriaDto);
     return this.categoriaRepository.save(categoriaUpdate);
@@ -53,7 +56,7 @@ export class CategoriasService {
   async remove(id: number) {
     const categoria = await this.categoriaRepository.findOneBy({ id });
     if (!categoria) {
-      throw new NotFoundException(`No existe la categoria ${id}`)
+      throw new NotFoundException(`No existe la categoria ${id}`);
     }
     return this.categoriaRepository.delete(id);
   }
