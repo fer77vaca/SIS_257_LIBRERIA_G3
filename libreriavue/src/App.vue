@@ -19,8 +19,9 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/productos">Producto</RouterLink>
         <RouterLink to="/usuarios">Usuario</RouterLink>
         <RouterLink to="/ventas">Venta</RouterLink>
+        <RouterLink to="/unidades">Unidad</RouterLink>
       </nav>
-    </div>
+    </div> 
   </header>
 
   <RouterView />
