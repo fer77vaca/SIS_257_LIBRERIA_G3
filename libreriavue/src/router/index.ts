@@ -90,7 +90,19 @@ const router = createRouter({
         }
       ]
     },
-    
+    {
+      path: '/unidades',
+      name: 'unidades',
+      component: () => import('../views/UnidadView.vue'),
+      children: [
+        { path: '', component: () => import('../components/unidad/UnidadList.vue') },
+        { path: 'crear', component: () => import('../components/unidad/UnidadCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/unidad/UnidadEdit.vue')
+        }
+      ]
+    },
   ] 
 })
 
