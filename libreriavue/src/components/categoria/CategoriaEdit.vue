@@ -9,16 +9,12 @@ const props = defineProps<{
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-const nombre = ref('')
-const marca = ref('') 
 const descripcion = ref('')
 const id = router.currentRoute.value.params['id']
 
 async function editarCategoria() {
   await http
     .patch(`${ENDPOINT}/${id}`, {
-      nombre: nombre.value,
-      marca: marca.value,
       descripcion: descripcion.value
     })
     .then(() => router.push('/categorias'))
@@ -26,7 +22,7 @@ async function editarCategoria() {
 
 async function getCategoria() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
-    ;(nombre.value = response.data.nombre), (marca.value = response.data.marca), (descripcion.value = response.data.descripcion)
+    ;(descripcion.value = response.data.descripcion)
   })
 }
 
@@ -57,14 +53,7 @@ onMounted(() => {
 
     <div class="row">
       <form @submit.prevent="editarCategoria">
-        <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="nombre" placeholder="Nombre" required />
-          <label for="nombre">Nombre</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="marca" placeholder="Marca" required />
-          <label for="marca">Marca</label>
-        </div>
+        
         <div class="form-floating mb-3">
           <input type="string" class="form-control" v-model="descripcion" placeholder="Descripción" required />
           <label for="descripcion">Descripción</label>

@@ -8,13 +8,11 @@ const props = defineProps<{
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-const nombre = ref('')
-const marca = ref('')
 const descripcion = ref('')
 
 async function crearCategoria() {
   await http
-    .post(ENDPOINT, { nombre: nombre.value, marca: marca.value, descripcion: descripcion.value })
+    .post(ENDPOINT, {descripcion: descripcion.value })
     .then(() => router.push('/categorias')) 
 }
 
@@ -40,14 +38,6 @@ function goBack() {
 
     <div class="row">
       <form @submit.prevent="crearCategoria()">
-        <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="nombre" placeholder="Nombre" required />
-          <label for="nombre">Nombre</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="marca" placeholder="Marca" required />
-          <label for="marca">Marca</label>
-        </div>
         <div class="form-floating mb-3">
           <input type="string" class="form-control" v-model="descripcion" placeholder="Descripcion" required />
           <label for="descripcion">Descripcion</label>

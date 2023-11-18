@@ -9,35 +9,32 @@ const props = defineProps<{
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-const nombre = ref('')
-const dni = ref('')
-const direccion = ref('')
-const telefono = ref('')
-const cargo = ref('')
+const usuario = ref('')
+const clave = ref('')
 const email = ref('')
+const rol = ref('')
+const premiun = ref('')
 const id = router.currentRoute.value.params['id']
 
 async function editarUsuario() {
   await http
     .patch(`${ENDPOINT}/${id}`, {
-      nombre: nombre.value,
-      dni: dni.value,
-      direccion: direccion.value,
-      telefono: telefono.value,
-      cargo: cargo.value,
-      email: email.value
+      usuario: usuario.value,
+      clave: clave.value,
+      email: email.value,
+      rol: rol.value,
+      premiun: premiun.value
     })
     .then(() => router.push('/usuarios'))
 }
 
 async function getUsuario() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
-    nombre.value = response.data.nombre
-    dni.value = response.data.dni
-    direccion.value = response.data.direccion
-    telefono.value = response.data.telefono
-    cargo.value = response.data.cargo
+    usuario.value = response.data.usuario
+    clave.value = response.data.clave
     email.value = response.data.email
+    rol.value = response.data.rol
+    premiun.value = response.data.premiun
   })
 }
 
@@ -69,33 +66,24 @@ onMounted(() => {
     <div class="row">
       <form @submit.prevent="editarUsuario">
         <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="nombre" placeholder="Nombre" required />
-          <label for="nombre">Nombre</label>
+          <input type="string" class="form-control" v-model="usuario" placeholder="usuario" required />
+          <label for="usuario">usuario</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="number" class="form-control" v-model="dni" placeholder="DNI" required />
-          <label for="dni">DNI</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="direccion" placeholder="Dirección" required />
-          <label for="direccion">Dirección</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="number" class="form-control" v-model="telefono" placeholder="Teléfono" required />
-          <label for="telefono">Teléfono</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="cargo" placeholder="Cargo" required />
-          <label for="cargo">Cargo</label>
+          <input type="string" class="form-control" v-model="clave" placeholder="clave" required />
+          <label for="clave">clave</label>
         </div>
         <div class="form-floating mb-3">
           <input type="string" class="form-control" v-model="email" placeholder="Email" required />
           <label for="email">Email</label>
         </div>
-        <div class="text-center mt-3">
-          <button type="submit" class="btn btn-primary btn-lg">
-            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar
-          </button>
+        <div class="form-floating mb-3">
+          <input type="string" class="form-control" v-model="rol" placeholder="Rol" required />
+          <label for="rol">Rol</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="boolean" class="form-control" v-model="premiun" placeholder="premiun" required />
+          <label for="premiun">premiun</label>
         </div>
       </form>
     </div>

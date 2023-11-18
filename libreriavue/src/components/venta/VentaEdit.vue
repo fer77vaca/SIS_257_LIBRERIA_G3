@@ -9,20 +9,29 @@ const props = defineProps<{
 }>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-const fechaVenta = ref('')
+const transaccion = ref('')
+const fecha = ref('')
+const idUsuario = ref('')
+const idCliente = ref('')
 const id = router.currentRoute.value.params['id']
 
 async function editarVenta() {
   await http
     .patch(`${ENDPOINT}/${id}`, {
-      fechaVenta: fechaVenta.value
+      transaccion: transaccion.value,
+      echa: fecha.value,
+      idUsuario: idUsuario.value,
+      idCliente: idCliente.value
     })
     .then(() => router.push('/ventas'))
 }
 
 async function getVenta() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
-    fechaVenta.value = response.data.fechaVenta
+    transaccion.value = response.data.transaccion
+    fecha.value = response.data.fecha
+    idUsuario.value = response.data.idUsuario
+    idCliente.value = response.data.idCliente
   })
 }
 
@@ -54,10 +63,22 @@ onMounted(() => {
     <div class="row">
       <form @submit.prevent="editarVenta">
         <div class="form-floating mb-3">
-          <input type="Date" class="form-control" v-model="fechaVenta" placeholder="Fecha" required />
-          <label for="fechaVenta">Fecha</label>
-        </div>
-       
+                    <input type="string" class="form-control" v-model="transaccion" placeholder="Transaccion" required />
+                    <label for="transaccion">Transaccion</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="Date" class="form-control" v-model="fecha" placeholder="Fecha" required />
+                    <label for="fecha">Fecha</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" v-model="idUsuario" placeholder="IdUsuario" required />
+                    <label for="idUsuario">IdUsuario</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" v-model="idCliente" placeholder="IdCliente" required />
+                    <label for="idCliente">IdCliente</label>
+                </div>
+
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
             <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Guardar

@@ -13,7 +13,6 @@ const telefono = ref('')
 const nit = ref('')
 const razonSocial = ref('')
 const direccion = ref('')
-const email = ref('')
 
 async function crearCliente() {
   await http
@@ -22,8 +21,7 @@ async function crearCliente() {
       telefono: telefono.value,
       nit: nit.value,
       razonSocial: razonSocial.value,
-      direccion: direccion.value,
-      email: email.value
+      direccion: direccion.value
     })
     .then(() => router.push('/clientes'))
 }
@@ -69,10 +67,6 @@ function goBack() {
         <div class="form-floating mb-3">
           <input type="string" class="form-control" v-model="direccion" placeholder="Dirección" required />
           <label for="direccion">Dirección</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="email" placeholder="Email" required />
-          <label for="email">Email</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">

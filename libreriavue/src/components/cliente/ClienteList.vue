@@ -59,7 +59,6 @@ onMounted(() => {
             <th scope="col">NIT</th>
             <th scope="col">RazonSocial</th>
             <th scope="col">Direccion</th>
-            <th scope="col">Email</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -71,13 +70,15 @@ onMounted(() => {
             <td>{{ cliente.nit }}</td>
             <td>{{ cliente.razonSocial }}</td>
             <td>{{ cliente.direccion }}</td>
-            <td>{{ cliente.email }}</td>
+          
             <td>
               <button class="btn text-success" @click="toEdit(cliente.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />
+                Editar
               </button>
               <button class="btn text-danger" @click="toDelete(cliente.id)">
                 <font-awesome-icon icon="fa-solid fa-trash" />
+                Eliminar
               </button>
             </td>
           </tr>

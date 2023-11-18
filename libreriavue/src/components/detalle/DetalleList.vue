@@ -56,6 +56,9 @@ onMounted(() => {
             <th scope="col">N°</th>
             <th scope="col">Cantidad</th>
             <th scope="col">Precio Unitario</th> 
+            <th scope="col">Total</th> 
+            <th scope="col">IdVenta</th> 
+            <th scope="col">IdProducto</th> 
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -64,6 +67,9 @@ onMounted(() => {
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ detalle.cantidad }}</td> 
             <td>{{ detalle.precioUnitario }}</td>
+            <td>{{ detalle.total }}</td>
+            <td>{{ detalle.idVenta }}</td>
+            <td>{{ detalle.idProducto }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(detalle.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />

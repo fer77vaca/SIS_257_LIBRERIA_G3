@@ -1,9 +1,9 @@
 export interface Usuario{
-  nombre : string
-  dni : number
-  direccion : string
-  telefono : number
-  cargo : string
-  email : string    
+  id: number
+    usuario : string
+    clave : string
+    email : string
+    rol : string
+    premiun : boolean
 }
   

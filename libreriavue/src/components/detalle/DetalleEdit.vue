@@ -11,6 +11,9 @@ const props = defineProps<{
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const cantidad = ref('')
 const precioUnitario = ref('')
+const total = ref('') 
+const idVenta = ref('') 
+const idProducto = ref('') 
 const id = router.currentRoute.value.params['id']
 
 async function editarDetalle() {
@@ -18,13 +21,20 @@ async function editarDetalle() {
     .patch(`${ENDPOINT}/${id}`, {
       cantidad: cantidad.value,
       precioUnitario: precioUnitario.value,
+      total: total.value, 
+      idVenta: idVenta.value, 
+      idProducto: idProducto.value 
     })
-    .then(() => router.push('/detalles')) // Cambiamos '/productos' a '/detalles'
+    .then(() => router.push('/detalles')) 
 }
 
 async function getDetalle() {
   await http.get(`${ENDPOINT}/${id}`).then((response) => {
-    ;(cantidad.value = response.data.cantidad), (precioUnitario.value = response.data.precioUnitario)
+    ;(cantidad.value = response.data.cantidad), 
+    (precioUnitario.value = response.data.precioUnitario), 
+    (total.value = response.data.total), 
+    (idVenta.value = response.data.idVenta), 
+    (idProducto.value = response.data.idProducto)
   })
 }
 
@@ -62,6 +72,18 @@ onMounted(() => {
         <div class="form-floating mb-3">
           <input type="number" class="form-control" v-model="precioUnitario" placeholder="Precio Unitario" required />
           <label for="precioUnitario">Precio Unitario</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" v-model="total" placeholder="Total" required />
+          <label for="total">Total</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" v-model="idVenta" placeholder="IdVenta" required />
+          <label for="idVenta">IdVenta</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" v-model="idProducto" placeholder="IdProducto" required />
+          <label for="idProducto">IdProducto</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">

@@ -54,24 +54,22 @@ onMounted(() => {
         <thead>
           <tr>
             <th scope="col">N°</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">DNI</th>
-            <th scope="col">Dirección</th>
-            <th scope="col">Teléfono</th>
-            <th scope="col">Cargo</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Clave</th>
             <th scope="col">Email</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Premiun</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(usuario, index) in usuarios" :key="usuario.id">
             <th scope="row">{{ index + 1 }}</th>
-            <td>{{ usuario.nombre }}</td>
-            <td>{{ usuario.dni }}</td>
-            <td>{{ usuario.direccion }}</td>
-            <td>{{ usuario.telefono }}</td>
-            <td>{{ usuario.cargo }}</td>
+            <td>{{ usuario.usuario }}</td>
+            <td>{{ usuario.clave }}</td>
             <td>{{ usuario.email }}</td>
+            <td>{{ usuario.rol }}</td>
+            <td>{{ usuario.premiun }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(usuario.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />

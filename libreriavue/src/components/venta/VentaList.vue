@@ -54,15 +54,20 @@ onMounted(() => {
         <thead>
           <tr>
             <th scope="col">N°</th>
+            <th scope="col">Transaccion</th>
             <th scope="col">Fecha</th>
-            
+            <th scope="col">IdUsuario</th>
+            <th scope="col">IdCliente</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(venta, index) in ventas" :key="venta.id">
             <th scope="row">{{ index + 1 }}</th>
-            <td>{{ venta.fechaVenta }}</td>
+            <td>{{ venta.transaccion }}</td>
+            <td>{{ venta.fecha }}</td>
+            <td>{{ venta.idUsuario }}</td>
+            <td>{{ venta.idCliente }}</td>
             
             <td>
               <button class="btn text-success" @click="toEdit(venta.id)">

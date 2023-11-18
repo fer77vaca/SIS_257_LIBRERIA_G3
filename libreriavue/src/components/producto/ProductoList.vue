@@ -56,22 +56,26 @@ onMounted(() => {
         <thead>
           <tr>
             <th scope="col">N°</th>
-            <th scope="col">Nombre</th>
+            <th scope="col">IdCategoria</th>
+            <th scope="col">Codigo</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">IdUnidad</th>
             <th scope="col">Precio</th>
-            <th scope="col">Unidad_Monetaria</th>
-            <th scope="col">Código</th>
-            <th scope="col">Descripción</th>
+            <th scope="col">ExistenciaProducto</th>
+            <th scope="col">UrlImagen</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(producto, index) in productos.values()" :key="producto.id">
             <th scope="row">{{ index + 1 }}</th>
-            <td>{{ producto.nombre }}</td>
-            <td>{{ producto.precio }}</td>
-            <td>{{ producto.unidadMonetaria }}</td>
+            <td>{{ producto.idCategoria }}</td>
             <td>{{ producto.codigo }}</td>
             <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.idUnidad }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.existenciaProducto }}</td>
+            <td>{{ producto.urlImagen }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(producto.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />

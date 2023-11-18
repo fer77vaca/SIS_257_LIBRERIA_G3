@@ -10,10 +10,17 @@ const props = defineProps<{
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const cantidad = ref('') 
 const precioUnitario = ref('') 
+const total = ref('') 
+const idVenta = ref('') 
+const idProducto = ref('') 
 
 async function crearDetalle() {
   await http
-    .post(ENDPOINT, { cantidad: cantidad.value, precioUnitario: precioUnitario.value })
+    .post(ENDPOINT, { cantidad: cantidad.value, 
+      precioUnitario: precioUnitario.value, 
+      total: total.value, 
+      idVenta: idVenta.value, 
+      idProducto: idProducto.value })
     .then(() => router.push('/detalles'))
 }
 
@@ -46,6 +53,18 @@ function goBack() {
         <div class="form-floating mb-3">
           <input type="number" class="form-control" v-model="precioUnitario" placeholder="Precio Unitario" required />
           <label for="precioUnitario">Precio Unitario</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" v-model="total" placeholder="Total" required />
+          <label for="total">Total</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" v-model="idVenta" placeholder="IdVenta" required />
+          <label for="idVenta">IdVenta</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" v-model="idProducto" placeholder="IdProducto" required />
+          <label for="idProducto">IdProducto</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">

@@ -54,8 +54,6 @@ onMounted(() => {
         <thead>
           <tr>
             <th scope="col">N°</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Marca</th> 
             <th scope="col">Descripción</th>
             <th scope="col">Acciones</th>
           </tr>
@@ -63,15 +61,15 @@ onMounted(() => {
         <tbody>
           <tr v-for="(categoria, index) in categorias.values()" :key="categoria.id">
             <th scope="row">{{ index + 1 }}</th>
-            <td>{{ categoria.nombre }}</td>
-            <td>{{ categoria.marca }}</td> 
             <td>{{ categoria.descripcion }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(categoria.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />
+                Editar
               </button>
               <button class="btn text-danger" @click="toDelete(categoria.id)">
                 <font-awesome-icon icon="fa-solid fa-trash" />
+                Eliminar
               </button>
             </td>
           </tr>
