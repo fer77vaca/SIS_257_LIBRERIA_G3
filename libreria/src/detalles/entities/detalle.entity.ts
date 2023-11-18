@@ -1,4 +1,4 @@
-import { Producto } from 'src/productos/entities/producto.entity';
+ import { Producto } from 'src/productos/entities/producto.entity';
 import { Venta } from 'src/ventas/entities/venta.entity';
 import {
   Column,
