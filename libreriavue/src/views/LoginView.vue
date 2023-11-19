@@ -37,7 +37,7 @@ function onSubmit() {
         />
       </div>
 
-      <p v-if="error" class="error-message">Datos. Por favor, intenta de nuevo.</p>
+      <p v-if="error" class="error-message">Datos Erroneos. Por favor, intenta de nuevo.</p>
       <button type="submit" class="form-submit">Ingresar</button>
     </form>
   </div>
@@ -95,10 +95,10 @@ function onSubmit() {
   border: none;
   border-radius: 20px;
   color: #fff;
-  padding: 12px 20px; /* Adjusted padding for better centering */
+  padding: 12px 20px;
   cursor: pointer;
   transition: background 0.2s;
-  margin-top: 1rem; /* Provide some space between the error message and the button */
+  margin-top: 1rem; 
 }
 
 .form-submit:hover {
