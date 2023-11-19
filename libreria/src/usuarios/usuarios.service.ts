@@ -29,6 +29,7 @@ export class UsuariosService {
 
     const usuario = new Usuario();
     usuario.usuario = createUsuarioDto.usuario.trim();
+    usuario.clave = process.env.DEFAULT_PASSWORD;
     usuario.email = createUsuarioDto.email.trim();
     usuario.rol = createUsuarioDto.rol.trim();
     usuario.premium = createUsuarioDto.premium;
