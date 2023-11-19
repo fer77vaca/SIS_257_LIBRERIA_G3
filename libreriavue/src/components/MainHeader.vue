@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
-
+import { useAuthStore } from '@/stores/index'
+const authStore = useAuthStore()
 const location = useRoute()
 </script>
 
@@ -28,7 +29,7 @@ const location = useRoute()
         :style="'background-color: '+ (location.path != '/' ? 'black ': 'transparent' )"
         > 
             <div class="container">
-                <a href="ticket.html" class="btn custom-btn d-lg-none ms-auto me-4">Buy Ticket</a>
+                
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,8 +74,9 @@ const location = useRoute()
                             <RouterLink to="/ventas" class="nav-link click-scroll">Ventas</RouterLink>
                         </li>
                     </ul>
-
-                    <a href="ticket.html" class="btn custom-btn d-lg-block d-none">Iniciar Sesion</a>
+                    <!--Se añadio Router Link Para Ligin -->
+                    <RouterLink v-if="!authStore.token" to="/login" class="btn custom-btn d-lg-block d-none">Iniciar Sesión</RouterLink>
+                    <a v-else @click="authStore.logout()" class="btn custom-btn d-lg-block d-none">Salir</a>
                 </div>
             </div>
         </nav>
