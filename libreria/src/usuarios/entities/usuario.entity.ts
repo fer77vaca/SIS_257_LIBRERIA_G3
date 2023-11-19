@@ -8,6 +8,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+// Chino aca vamos a hacer los cambios para el JWT
+
 @Entity('usuarios')
 export class Usuario {
   @PrimaryGeneratedColumn()
@@ -26,7 +28,7 @@ export class Usuario {
   rol: string;
 
   @Column()
-  premium: boolean; 
+  premium: boolean;
 
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
