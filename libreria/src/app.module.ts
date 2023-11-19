@@ -17,6 +17,7 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { Usuario } from './usuarios/entities/usuario.entity';
 import { UnidadesModule } from './unidades/unidades.module';
 import { Unidad } from './unidades/entities/unidad.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { Unidad } from './unidades/entities/unidad.entity';
     ClientesModule,
     UsuariosModule,
     UnidadesModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
