@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -75,5 +76,21 @@ export class UsuariosService {
     }
 
     return this.usuarioRepository.delete(id);
+  }
+
+  async validate(usuario: string, clave: string): Promise<Usuario> {
+    const usuarioOk = await this.usuarioRepository.findOne({
+      where: { usuario },
+      select: ['id', 'usuario', 'clave', 'email', 'rol', 'premium'],
+    });
+
+    if (!usuarioOk) throw new NotFoundException('Usuario inexistente');
+
+    if (!(await usuarioOk?.validatePassword(clave))) {
+      throw new UnauthorizedException('Clave incorrecta');
+    }
+
+    delete usuarioOk.clave;
+    return usuarioOk;
   }
 }
