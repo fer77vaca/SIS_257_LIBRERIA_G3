@@ -48,4 +48,8 @@ export class Usuario {
     const salt = await bcrypt.genSalt();
     this.clave = await bcrypt.hash(this.clave, salt);
   }
+
+  async validatePassword(plainPassword: string): Promise<boolean> {
+    return bcrypt.compare(plainPassword, this.clave);
+  }
 }
