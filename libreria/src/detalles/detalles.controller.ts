@@ -1,11 +1,23 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { DetallesService } from './detalles.service';
 import { CreateDetalleDto } from './dto/create-detalle.dto';
 import { UpdateDetalleDto } from './dto/update-detalle.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @ApiTags('Detalles')
 @Controller('detalles')
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 export class DetallesController {
   constructor(private readonly detallesService: DetallesService) {}
 
