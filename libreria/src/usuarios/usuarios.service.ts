@@ -27,9 +27,13 @@ export class UsuariosService {
       );
     }
 
-    return this.usuarioRepository.save({
-      email: createUsuarioDto.email.trim(),
-    });
+    const usuario = new Usuario();
+    usuario.usuario = createUsuarioDto.usuario.trim();
+    usuario.email = createUsuarioDto.email.trim();
+    usuario.rol = createUsuarioDto.rol.trim();
+    usuario.premium = createUsuarioDto.premium;
+
+    return this.usuarioRepository.save(usuario);
   }
   // OBTENER TODOS LOS USUARIOS
   async findAll(): Promise<Usuario[]> {

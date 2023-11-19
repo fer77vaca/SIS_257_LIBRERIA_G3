@@ -1,5 +1,8 @@
+import * as bcrypt from 'bcrypt';
 import { Venta } from 'src/ventas/entities/venta.entity';
 import {
+  BeforeInsert,
+  BeforeUpdate,
   Column,
   CreateDateColumn,
   Entity,
@@ -37,5 +40,12 @@ export class Usuario {
   fechaModificacion: Date;
 
   @OneToMany(() => Venta, (venta) => venta.usuario)
-  ventas: Venta;
+  ventas: Venta[];
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  async hashPassword() {
+    const salt = await bcrypt.genSalt();
+    this.clave = await bcrypt.hash(this.clave, salt);
+  }
 }
