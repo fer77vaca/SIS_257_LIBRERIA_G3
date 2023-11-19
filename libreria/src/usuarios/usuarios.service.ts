@@ -34,7 +34,9 @@ export class UsuariosService {
     usuario.rol = createUsuarioDto.rol.trim();
     usuario.premium = createUsuarioDto.premium;
 
-    return this.usuarioRepository.save(usuario);
+    const usuarioDB = await this.usuarioRepository.save(usuario);
+    delete usuario.clave;
+    return usuarioDB;
   }
   // OBTENER TODOS LOS USUARIOS
   async findAll(): Promise<Usuario[]> {
