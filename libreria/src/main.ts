@@ -15,6 +15,12 @@ async function bootstrap() {
     .setDescription('Backend Libreria G3')
     .setVersion('1.0')
     .addTag('productos, ventas')
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+      in: 'header',
+    })
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('apidoc', app, document);
