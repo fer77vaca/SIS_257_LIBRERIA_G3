@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>Esto Es Nuestro Proyecto </h1>
+    <h1>Proyecto Libreria</h1>
   </div>
 </template>
 

@@ -13,95 +13,70 @@ function onSubmit() {
 </script>
 
 <template>
-  <div class="login-container">
-    <h1 class="login-title">Iniciar Sesión</h1>
-    <form class="login-form" @submit.prevent="onSubmit">
-      <div class="form-group">
-        <label class="form-label">Usuario:</label>
-        <input
-          v-model="usuario"
-          type="text"
-          class="form-input"
-          placeholder="Nombre de usuario"
-          autofocus
-        />
-      </div>
+  <div class="my-5 pt-5">
+    <h1 class="text-center">Iniciar Sesión</h1>
+    <form class="form" @submit.prevent="onSubmit">
+      <label class="form-label">Usuario:</label>
+      <input
+        v-model="usuario"
+        type="text"
+        class="form-input"
+        placeholder="Usuario"
+        autofocus
+      />
 
-      <div class="form-group">
-        <label class="form-label">Contraseña:</label>
-        <input
-          v-model="clave"
-          type="password"
-          class="form-input"
-          placeholder="Contraseña"
-        />
-      </div>
+      <label class="form-label">Contraseña:</label>
+      <input
+        v-model="clave"
+        type="password"
+        class="form-input"
+        placeholder="Contraseña"
+      />
 
-      <p v-if="error" class="error-message">Datos Erroneos. Por favor, intenta de nuevo.</p>
-      <button type="submit" class="form-submit">Ingresar</button>
+      <p v-if="error" class="text-danger">Usuario y/o contraseña incorrectos</p>
+      <input type="submit" class="form-submit" value="Ingresar" />
     </form>
   </div>
 </template>
 
 <style>
-.login-container {
+.form {
+  margin: 1.5rem auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-}
-
-.login-title {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.login-form {
-  width: 80%;
-  max-width: 400px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
+  width: 20%;
+  min-width: 350px;
+  max-width: 100%;
+  background: rgba(203, 204, 206, 0.9);
+  border-radius: 40px;
+  padding: 40px;
+  box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
 }
 
 .form-label {
-  font-size: 1rem;
-  color: #333;
+  margin-top: 2rem;
+  color: rgb(90, 89, 89);
   margin-bottom: 0.5rem;
 }
 
 .form-input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.error-message {
-  color: #ff4136;
-  margin-top: 0.5rem;
+  padding: 10px 15px;
+  background: none;
+  background-image: none;
+  border: 1px solid white;
+  color: white;
+  border-radius: 20px;
 }
 
 .form-submit {
-  background: #ff5722;
+  background: #ee5007;
   border: none;
-  border-radius: 20px;
-  color: #fff;
-  padding: 12px 20px;
+  border-radius: 5rem;
+  color: white;
+  margin-top: 3rem;
+  padding: 1rem 0;
   cursor: pointer;
   transition: background 0.2s;
-  margin-top: 1rem; 
-}
-
-.form-submit:hover {
-  background: #ff6d38;
 }
 </style>

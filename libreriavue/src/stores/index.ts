@@ -14,7 +14,8 @@ const useAuthStore = defineStore("auth", {
     async login(usuario: string, clave: string) {
       await http.post("auth/login", { usuario, clave }).then(response => {
         this.user = response.data.usuario;
-        this.token = response.data.access_token;
+        console.log(response.data)
+        this.token = response.data.acces_token;
 
         localStorage.setItem("user", this.user || "");
         localStorage.setItem("token", this.token || "");

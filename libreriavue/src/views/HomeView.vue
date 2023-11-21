@@ -62,17 +62,19 @@
         <div class="video-wrap">
             <video autoplay="" loop="" muted="" class="custom-video" poster="">
                 <source src="@/assets/video/lapices.mp4" type="video/mp4">
-
-                Your browser does not support the video tag.
             </video>
         </div>
     </section>
 
 
-    
+
 
     <!--Aka poner de las imagenes que se deslizan-->
     
+    
+    <!--Aka Comienza Los estilos de casurrel-->
+    
 
+    
     
 </template>
