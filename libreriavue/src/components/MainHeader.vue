@@ -52,7 +52,7 @@ const location = useRoute()
           <li class="nav-item">
             <RouterLink to="/about" class="nav-link click-scroll">Acerca De</RouterLink>
           </li>
-          <slot >
+          <slot v-if="authStore.token">
             <li class="nav-item">
               <RouterLink to="/categorias" class="nav-link click-scroll">Categorias</RouterLink>
             </li>
