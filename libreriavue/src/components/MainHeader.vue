@@ -19,27 +19,16 @@ const location = useRoute()
     </div>
   </header>
 
-  <nav
-    class="navbar navbar-expand-lg"
-    :style="'background-color: '+ (location.path != '/' ? 'black ': 'transparent' )"
-        > 
+  <nav class="navbar navbar-expand-lg" :style="'background-color: ' + (location.path != '/' ? 'black ' : 'transparent')">
     <div class="container">
       <a class="navbar-brand" href="index.html"> Libreria </a>
 
-      <RouterLink v-if="!authStore.token" to="/login" class="btn custom-btn d-lg-none ms-auto me-4"
-        >Iniciar Sesión</RouterLink
-      >
+      <RouterLink v-if="!authStore.token" to="/login" class="btn custom-btn d-lg-none ms-auto me-4">Iniciar Sesión
+      </RouterLink>
       <a v-else @click="authStore.logout()" class="btn custom-btn d-lg-none ms-auto me-4">Salir</a>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -68,9 +57,7 @@ const location = useRoute()
             <li class="nav-item">
               <RouterLink to="/unidades" class="nav-link click-scroll">Unidades</RouterLink>
             </li>
-            <li class="nav-item">
-              <RouterLink to="/usuarios" class="nav-link click-scroll">Usuarios</RouterLink>
-            </li>
+            
             <li class="nav-item">
               <RouterLink to="/ventas" class="nav-link click-scroll">Ventas</RouterLink>
             </li>
@@ -79,9 +66,8 @@ const location = useRoute()
             </li>
           </slot>
         </ul>
-        <RouterLink v-if="!authStore.token" to="/login" class="btn custom-btn d-lg-block d-none"
-          >Iniciar Sesión</RouterLink
-        >
+        <RouterLink v-if="!authStore.token" to="/login" class="btn custom-btn d-lg-block d-none">Iniciar Sesión
+        </RouterLink>
         <a v-else @click="authStore.logout()" class="btn custom-btn d-lg-block d-none">Salir</a>
       </div>
     </div>

@@ -1,4 +1,10 @@
+
 <script setup lang="ts">
+import type { Producto } from '@/models/producto';
+import { onMounted, ref } from 'vue'
+import http from '@/plugins/axios' 
+import router from '@/router' 
+
 
 </script>
 
@@ -66,15 +72,9 @@
         </div>
     </section>
 
-
-
-
-    <!--Aka poner de las imagenes que se deslizan-->
-    
-    
-    <!--Aka Comienza Los estilos de casurrel-->
-    
-
-    
     
 </template>
+
+
+
+<style ></style>
