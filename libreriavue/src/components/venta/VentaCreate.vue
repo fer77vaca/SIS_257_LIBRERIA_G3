@@ -1,34 +1,45 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import http from '@/plugins/axios'
-import router from '@/router'
+import { onMounted, ref } from 'vue';
+import http from '@/plugins/axios';
+import router from '@/router';
+import type { Usuario } from '@/models/usuario';
+import type { Cliente } from '@/models/cliente';
 
+const usuarios = ref<Usuario[]>([]);
+const clientes = ref<Cliente[]>([]);
+const transaccion = ref('');
+const fecha = ref('');
+const idUsuario = ref('');
+const idCliente = ref('');
 
-const props = defineProps<{
-    ENDPOINT_API: string
-}>()
-
-
-const ENDPOINT = props.ENDPOINT_API ?? ''
-const transaccion = ref('')
-const fecha = ref('')
-const idUsuario = ref('')
-const idCliente = ref('')
-
+onMounted(async () => {
+  try {
+    usuarios.value = await http.get('usuarios').then((response) => response.data);
+    clientes.value = await http.get('clientes').then((response) => response.data);
+  } catch (error) {
+    console.error('Error al obtener usuarios o clientes:', error);
+  }
+});
 
 async function crearVenta() {
-    await http
-        .post(ENDPOINT, {
-            transaccion: transaccion.value,
-            fecha: fecha.value,
-            idUsuario: idUsuario.value,
-            idCliente: idCliente.value,
-        })
-        .then(() => router.push('/ventas'))
+  try {
+    await http.post(ENDPOINT, {
+      transaccion: transaccion.value,
+      fecha: fecha.value,
+      idUsuario: idUsuario.value,
+      idCliente: idCliente.value,
+    });
+
+    // Redirigir después de una venta exitosa
+    router.push('/ventas');
+  } catch (error) {
+    console.error('Error al crear venta:', error);
+    // Puedes mostrar un mensaje de error al usuario si lo deseas
+  }
 }
 
 function goBack() {
-    router.go(-1)
+  router.go(-1);
 }
 </script>
 
@@ -45,6 +56,7 @@ function goBack() {
                 <li class="breadcrumb-item active" aria-current="page">Crear Ventas</li>
             </ol>
         </nav>
+        <br><br><br>
         <div class="row">
             <h2>Crear Nueva Venta</h2>
         </div>
@@ -59,14 +71,27 @@ function goBack() {
                     <input type="Date" class="form-control" v-model="fecha" placeholder="Fecha" required />
                     <label for="fecha">Fecha</label>
                 </div>
+
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" v-model="idUsuario" placeholder="IdUsuario" required />
-                    <label for="idUsuario">IdUsuario</label>
+                    <br>
+                    <label for="idUsuario">Usuario</label>
+                    <br>
+                    <select v-model="idUsuario" class="form-select">
+                        <option v-for="usuario in usuarios" :key="usuario.id" :value="usuario.usuario">
+                            {{ usuario.usuario }}
+                        </option>
+                    </select>
                 </div>
+
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" v-model="idCliente" placeholder="IdCliente" required />
-                    <label for="idCliente">IdCliente</label>
+                    <select v-model="idCliente" class="form-select">
+                        <option v-for="cliente in clientes" :key="cliente.id" :value="cliente.id">{{ cliente.nombre }}
+                        </option>
+                    </select>
+                    <label for="idCliente">Cliente</label>
                 </div>
+
+
 
                 <div class="text-center mt-3">
                     <button type="submit" class="btn btn-primary btn-lg">

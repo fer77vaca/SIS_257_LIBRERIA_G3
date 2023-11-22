@@ -32,6 +32,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <br><br><br><br>
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -39,7 +40,6 @@ onMounted(() => {
         <li class="breadcrumb-item active" aria-current="page">Ventas</li>
       </ol>
     </nav>
-
     <div class="row">
       <h2>Lista de Ventas</h2>
       <div class="col-12">

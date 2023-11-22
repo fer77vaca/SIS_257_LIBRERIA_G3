@@ -25,7 +25,7 @@ async function crearUsuario() {
       rol: rol.value,
       premiun: premiun.value
     })
-    .then(() => router.push('/usuarios')) 
+    .then(() => router.push('/usuarios'))
 }
 
 function goBack() {
@@ -37,7 +37,9 @@ function goBack() {
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
+        <li class="breadcrumb-item">
+          <RouterLink to="/">Inicio</RouterLink>
+        </li>
         <li class="breadcrumb-item">
           <RouterLink to="/usuarios">Usuarios</RouterLink>
         </li>
@@ -49,7 +51,7 @@ function goBack() {
     </div>
 
     <div class="row">
-      <form @submit.prevent="crearUsuario()">
+      <form @submit.prevent="crearUsuario">
         <div class="form-floating mb-3">
           <input type="string" class="form-control" v-model="usuario" placeholder="usuario" required />
           <label for="usuario">usuario</label>
@@ -67,13 +69,12 @@ function goBack() {
           <label for="rol">Rol</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="boolean" class="form-control" v-model="premiun" placeholder="premiun" required />
+          <input type="bool" class="form-control" v-model="premiun" placeholder="premiun" required />
           <label for="premiun">premiun</label>
         </div>
+
         <div class="text-center mt-3">
-          <button type="submit" class="btn btn-primary btn-lg">
-            <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Crear
-          </button>
+          <button type="submit" class="btn btn-primary btn-lg">Crear</button>
         </div>
       </form>
     </div>

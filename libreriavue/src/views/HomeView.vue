@@ -20,7 +20,7 @@ import router from '@/router'
 
                     <h1 class="text-white mb-5">Libreria</h1>
 
-                    <a class="btn custom-btn smoothscroll" href="#section_2">Vamos a empezar</a>
+                    <a class="btn custom-btn smoothscroll" href="/productos">Vamos a empezar</a>
                 </div>
 
                 <div class="col-lg-12 col-12 mt-auto d-flex flex-column flex-lg-row text-center">

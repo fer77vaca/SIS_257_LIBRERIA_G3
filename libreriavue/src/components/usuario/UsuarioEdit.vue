@@ -51,7 +51,9 @@ onMounted(() => {
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
+        <li class="breadcrumb-item">
+          <RouterLink to="/">Inicio</RouterLink>
+        </li>
         <li class="breadcrumb-item">
           <RouterLink to="/usuarios">Usuarios</RouterLink>
         </li>
@@ -82,8 +84,11 @@ onMounted(() => {
           <label for="rol">Rol</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="boolean" class="form-control" v-model="premiun" placeholder="premiun" required />
+          <input type="bool" class="form-control" v-model="premiun" placeholder="premiun" required />
           <label for="premiun">premiun</label>
+        </div>
+        <div class="text-center mt-3">
+          <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
         </div>
       </form>
     </div>

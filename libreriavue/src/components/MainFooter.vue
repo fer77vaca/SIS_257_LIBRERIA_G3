@@ -82,19 +82,25 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                    <h5 class="site-footer-title mb-3">Have a question?</h5>
+                    <h5 class="site-footer-title mb-3">Contacto</h5>
 
-                    <p class="text-white d-flex mb-1">
                         <a href="tel: 090-080-0760" class="site-footer-link">
-                            090-080-0760
+                            +591 669691114
                         </a>
-                    </p>
-
-                    <p class="text-white d-flex">
+                        <br>
                         <a href="mailto:hello@company.com" class="site-footer-link">
-                            hello@company.com
+                            josesucullani@gmail.com
                         </a>
-                    </p>
+
+                        <br>
+                        <a href="tel: 090-080-0760" class="site-footer-link">
+                            +591 fernandonum
+                        </a>
+
+                        <br>
+                        <a href="mailto:hello@company.com" class="site-footer-link">
+                            fernando@gmail.com
+                        </a>
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-11 mb-4 mb-lg-0 mb-md-0">
@@ -123,7 +129,7 @@
 
                     <div class="col-lg-3 col-12 mt-5">
                         <p class="copyright-text">Copyright © 2023 Libreria Company</p>
-                        <p class="copyright-text">Distributed by: <a href="https://themewagon.com">ThemeWagon</a></p>
+                       
                     </div>
 
                     <div class="col-lg-8 col-12 mt-lg-5">

@@ -4,7 +4,7 @@ import http from '@/plugins/axios'
 import router from '@/router'
 import type { Categoria } from '@/models/categoria';
 import type { Unidad } from '@/models/unidad';
-//-------------------------------
+
 var categorias = ref<Categoria[]>([])
 async function getCategorias() {
   categorias.value = await http.get("categorias").then((response) => response.data)
@@ -87,12 +87,12 @@ function goBack() {
     <div class="row">
       <form @submit.prevent="crearProducto">
         <div class="form-floating mb-3">
-          <select  v-model="idCategoria" class="form-select">
-          <option v-for="categoria in categorias" :value="categoria.id">{{ categoria.descripcion }} </option>
-        </select>
-        <label for="categoria">Categoría</label>
+          <select v-model="idCategoria" class="form-select">
+            <option v-for="categoria in categorias" :value="categoria.id">{{ categoria.descripcion }} </option>
+          </select>
+          <label for="categoria">Categoría</label>
         </div>
-        
+
         <div class="form-floating mb-3">
           <input type="text" class="form-control" v-model="codigo" placeholder="Codigo" required />
           <label for="codigo">Código</label>
@@ -103,17 +103,17 @@ function goBack() {
         </div>
 
         <div class="form-floating mb-3">
-          <select  v-model="idUnidad" class="form-select">
-          <option v-for="unidad in unidades" :value="unidad.id">{{ unidad.descripcion }} </option>
-        </select>
-        <label for="unidad">Unidad</label>
+          <select v-model="idUnidad" class="form-select">
+            <option v-for="unidad in unidades" :value="unidad.id">{{ unidad.descripcion }} </option>
+          </select>
+          <label for="unidad">Unidad</label>
         </div>
 
         <div class="form-floating">
           <input type="number" class="form-control" v-model="precio" placeholder="Precio" required />
           <label for="precio">Precio</label>
         </div>
-        
+
         <div class="form-floating">
           <input type="number" class="form-control" v-model="existenciaProducto" placeholder="Existencia Producto"
             required />
@@ -129,9 +129,6 @@ function goBack() {
           <input type="number" class="form-control" v-model="total" placeholder="Total" required readonly />
           <label for="Total">Total</label>
         </div>
-
-
-
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">Crear</button>
         </div>

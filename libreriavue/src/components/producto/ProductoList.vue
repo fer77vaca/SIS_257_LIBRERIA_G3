@@ -55,11 +55,11 @@ onMounted(() => {
                   <li class="breadcrumb-item active" aria-current="page">Productos</li>
                 </ol>
               </nav>
-              <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">LISTA DE PRODUCTOS</h2>
+              <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Lista de Productos</h2>
               <div class="col-12">
               </div>
             </div>
-            <RouterLink class="btn btn-success" to="/productos/crear"><i class="fa fa-plus-circle"></i></RouterLink>
+            <RouterLink class="btn btn-success" to="/productos/crear"><i class="fa fa-plus-circle"></i>Crear Nuevo</RouterLink>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ onMounted(() => {
     <br>
     <div class="container">
       <div class="table-responsive">
-        <table class="table table-dark table-striped">
+        <table class="table table-dark table-striped" >
           <!-- <table class="table table-bordered"> -->
           <thead>
             <tr>
@@ -92,8 +92,8 @@ onMounted(() => {
               <td>{{ producto.precio }}</td>
               <td>{{ producto.existenciaProducto }}</td>
               <td>
-                <button class="btn btn-primary btn-sm" @click="toEdit(producto.id)"><i class="fa fa-edit"></i></button> |
-                <button class="btn btn-danger btn-sm" @click="toDelete(producto.id)"><i class="fa fa-trash"></i></button>
+                <button class="btn btn-primary btn-sm" @click="toEdit(producto.id)">Editar<i class="fa fa-edit"></i></button> |
+                <button class="btn btn-danger btn-sm" @click="toDelete(producto.id)">Borrar<i class="fa fa-trash"></i></button>
               </td>
             </tr>
 
@@ -138,6 +138,7 @@ onMounted(() => {
             <h6>Bs{{ p.precio }}</h6>
             <p>{{ p.unidad.descripcion }}</p>
             <h7>DISPONIBLE</h7>
+            <br><br><br>
           </div>
         </div>
 

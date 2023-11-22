@@ -1,9 +1,8 @@
-export interface Usuario{
+export interface Usuario {
   id: number
-    usuario : string
-    clave : string
-    email : string
-    rol : string
-    premiun : boolean
+  usuario: string
+  clave: string
+  email: string
+  rol: string
+  premiun: boolean
 }
-  
