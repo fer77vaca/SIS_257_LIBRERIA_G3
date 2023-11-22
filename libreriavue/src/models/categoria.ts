@@ -1,6 +1,5 @@
 export interface Categoria{
-    nombre: string
-    marca : string
+    id : number
     descripcion : string
 }
   

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { Categoria } from '@/models/categoria';
+import type { Categoria } from '@/models/categoria'
 import { onMounted, ref } from 'vue'
-import http from '@/plugins/axios' 
-import router from '@/router' 
+import http from '@/plugins/axios'
+import router from '@/router'
 
 const props = defineProps<{
   ENDPOINT_API: string
-}>();
+}>()
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
 var categorias = ref<Categoria[]>([])
