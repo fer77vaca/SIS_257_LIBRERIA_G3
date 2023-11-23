@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
 import type { Producto } from '@/models/producto';
+import type { Venta } from '@/models/venta';
 
 var productos = ref<Producto[]>([])
 async function getProductos() {
@@ -12,6 +13,16 @@ async function getProductos() {
 onMounted(() => {
   getProductos()
 })
+
+var ventas = ref<Venta[]>([])
+async function getVentas() {
+  ventas.value = await http.get("ventas").then((response) => response.data)
+}
+
+onMounted(() => {
+  getVentas()
+})
+
 
 const props = defineProps<{
   ENDPOINT_API: string
@@ -72,10 +83,17 @@ function goBack() {
           <input type="number" class="form-control" v-model="total" placeholder="Total" required />
           <label for="total">Total</label>
         </div>
+
+
         <div class="form-floating mb-3">
-          <input type="number" class="form-control" v-model="idVenta" placeholder="IdVenta" required />
-          <label for="idVenta">IdVenta</label>
+          <select v-model="idVenta" class="form-select">
+            <option v-for="venta in ventas" :key="venta.id" :value="venta.id">
+              {{ venta.transaccion }} 
+            </option>
+          </select>
+          <label for="transaccion">transacción</label>
         </div>
+
         <div class="form-floating mb-3">
           <br>
           <label for="idProducto">Nombre del Producto</label>

@@ -3,10 +3,29 @@ import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
 import { RouterLink } from 'vue-router';
-
+import type { Producto } from '@/models/producto';
+import type { Venta } from '@/models/venta';
 const props = defineProps<{
   ENDPOINT_API: string
 }>()
+var productos = ref<Producto[]>([])
+async function getProductos() {
+  productos.value = await http.get("productos").then((response) => response.data)
+}
+
+onMounted(() => {
+  getProductos()
+})
+
+var ventas = ref<Venta[]>([])
+async function getVentas() {
+  ventas.value = await http.get("ventas").then((response) => response.data)
+}
+
+onMounted(() => {
+  getVentas()
+})
+
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const cantidad = ref('')
@@ -78,12 +97,23 @@ onMounted(() => {
           <label for="total">Total</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="number" class="form-control" v-model="idVenta" placeholder="IdVenta" required />
-          <label for="idVenta">IdVenta</label>
+          <select v-model="idVenta" class="form-select">
+            <option v-for="venta in ventas" :key="venta.id" :value="venta.id">
+              {{ venta.transaccion }} 
+            </option>
+          </select>
+          <label for="transaccion">transacción</label>
         </div>
+
         <div class="form-floating mb-3">
-          <input type="number" class="form-control" v-model="idProducto" placeholder="IdProducto" required />
-          <label for="idProducto">IdProducto</label>
+          <br>
+          <label for="idProducto">Nombre del Producto</label>
+          <br>
+          <select v-model="idProducto" class="form-select" required>
+            <option v-for="producto in productos" :key="producto.id" :value="producto.id">
+              {{ producto.descripcion }}
+            </option>
+          </select>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">

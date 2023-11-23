@@ -9,7 +9,7 @@ const props = defineProps<{
 }>();
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
-const ventas = ref<Venta[]>([])
+var ventas = ref<Venta[]>([])
 
 async function getVentas() {
   ventas.value = await http.get(ENDPOINT).then((response) => response.data)
@@ -21,7 +21,7 @@ function toEdit(id: number) {
 
 async function toDelete(id: number) {
   var r = confirm('¿Está seguro que desea eliminar la Venta?')
-  if (r) {
+  if (r == true) {
     await http.delete(`${ENDPOINT}/${id}`).then(() => getVentas())
   }
 }
@@ -32,7 +32,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <br><br><br><br>
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -40,6 +39,10 @@ onMounted(() => {
         <li class="breadcrumb-item active" aria-current="page">Ventas</li>
       </ol>
     </nav>
+    <br>
+    <br>
+    <br>
+
     <div class="row">
       <h2>Lista de Ventas</h2>
       <div class="col-12">
@@ -56,8 +59,8 @@ onMounted(() => {
             <th scope="col">N°</th>
             <th scope="col">Transaccion</th>
             <th scope="col">Fecha</th>
-            <th scope="col">IdUsuario</th>
-            <th scope="col">IdCliente</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Cliente</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -66,8 +69,10 @@ onMounted(() => {
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ venta.transaccion }}</td>
             <td>{{ venta.fecha }}</td>
-            <td>{{ venta.idUsuario }}</td>
-            <td>{{ venta.idCliente }}</td>
+            <td>{{ venta.usuario.usuario }}</td>
+            <td>{{ venta.cliente.nombre }}</td>
+
+            <!-- (venta.usuario as any).usuario -->
             
             <td>
               <button class="btn text-success" @click="toEdit(venta.id)">

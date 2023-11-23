@@ -58,9 +58,6 @@ const location = useRoute()
               <RouterLink to="/unidades" class="nav-link click-scroll">Unidades</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/usuarios" class="nav-link click-scroll">Usuarios</RouterLink>
-            </li>
-            <li class="nav-item">
               <RouterLink to="/ventas" class="nav-link click-scroll">Ventas</RouterLink>
             </li>
             <li class="nav-item">

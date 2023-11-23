@@ -3,6 +3,27 @@ import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
 import { RouterLink } from 'vue-router'
+import type { Usuario } from '@/models/usuario'
+import type { Cliente } from '@/models/cliente'
+
+
+var usuarios = ref<Usuario[]>([])
+async function getUsuarios() {
+  usuarios.value = await http.get('usuarios').then((response) => response.data)
+}
+
+onMounted(() => {
+  getUsuarios()
+})
+
+var clientes = ref<Cliente[]>([])
+async function getClientes() {
+  clientes.value = await http.get('clientes').then((response) => response.data)
+}
+
+onMounted(() => {
+  getClientes()
+})
 
 const props = defineProps<{
   ENDPOINT_API: string
@@ -48,14 +69,17 @@ onMounted(() => {
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><RouterLink to="/">Inicio</RouterLink></li>
+        <li class="breadcrumb-item">
+          <RouterLink to="/">Inicio</RouterLink>
+        </li>
         <li class="breadcrumb-item">
           <RouterLink to="/ventas">Ventas</RouterLink>
         </li>
         <li class="breadcrumb-item active" aria-current="page">Editar</li>
       </ol>
     </nav>
-
+    <br>
+    <br>
     <div class="row">
       <h2>Editar Venta</h2>
     </div>
@@ -63,21 +87,27 @@ onMounted(() => {
     <div class="row">
       <form @submit.prevent="editarVenta">
         <div class="form-floating mb-3">
-                    <input type="string" class="form-control" v-model="transaccion" placeholder="Transaccion" required />
-                    <label for="transaccion">Transaccion</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="Date" class="form-control" v-model="fecha" placeholder="Fecha" required />
-                    <label for="fecha">Fecha</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" v-model="idUsuario" placeholder="IdUsuario" required />
-                    <label for="idUsuario">IdUsuario</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" v-model="idCliente" placeholder="IdCliente" required />
-                    <label for="idCliente">IdCliente</label>
-                </div>
+          <input type="string" class="form-control" v-model="transaccion" placeholder="Transaccion" required />
+          <label for="transaccion">Transaccion</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="Date" class="form-control" v-model="fecha" placeholder="Fecha" required />
+          <label for="fecha">Fecha</label>
+        </div>
+        <div class="form-floating mb-3">
+          <select v-model="idUsuario" class="form-select">
+            <option v-for="usuario in usuarios" :value="usuario.id"> {{ usuario.rol }}
+            </option>
+          </select>
+          <label for="usuario">Usuario</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <select v-model="idCliente" class="form-select">
+            <option v-for="cliente in clientes" :value="cliente.id"> {{ cliente.nombre }} </option>
+          </select>
+          <label for="cliente">Cliente</label>
+        </div>
 
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
