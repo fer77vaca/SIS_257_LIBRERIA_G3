@@ -16,9 +16,9 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @Controller('usuarios')
 @ApiTags('Usuarios')
-/*Inicio de Autorizacion*/ 
-//@ApiBearerAuth()
-//@UseGuards(JwtAuthGuard)
+/*Inicio de Autorizacion*/
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 
 /*Fin de Autorizacion*/
 export class UsuariosController {

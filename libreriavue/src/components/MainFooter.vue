@@ -52,7 +52,7 @@
             <div class="row">
 
                 <div class="col-lg-6 col-12 mb-4 pb-2">
-                    <h5 class="site-footer-title mb-3">Links</h5>
+                    <h5 class="site-footer-title mb-3">Enlaces</h5>
 
                     <ul class="site-footer-links">
                         <li class="site-footer-link-item">
@@ -83,7 +83,7 @@
 
                         <br>
                         <a href="mailto:hello@company.com" class="site-footer-link">
-                            fernando@gmail.com
+                            ferchi77vaca@gmail.com
                         </a>
                 </div>
 
@@ -120,11 +120,11 @@
                             </li>
 
                             <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Privacy Policy</a>
+                                <a href="#" class="site-footer-link">Politica de Privacidad</a>
                             </li>
 
                             <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Your Feedback</a>
+                                <a href="#" class="site-footer-link">Tu Retroalimentacion</a>
                             </li>
                         </ul>
                     </div>
