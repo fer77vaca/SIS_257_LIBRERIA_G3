@@ -56,27 +56,11 @@
 
                     <ul class="site-footer-links">
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Home</a>
+                            <a href="#" class="site-footer-link">Inicio</a>
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">About</a>
-                        </li>
-
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Artists</a>
-                        </li>
-
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Schedule</a>
-                        </li>
-
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Pricing</a>
-                        </li>
-
-                        <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Contact</a>
+                            <a href="#" class="site-footer-link">Contactos</a>
                         </li>
                     </ul>
                 </div>
@@ -94,7 +78,7 @@
 
                         <br>
                         <a href="tel: 090-080-0760" class="site-footer-link">
-                            +591 fernandonum
+                            +591 68310370
                         </a>
 
                         <br>
@@ -104,13 +88,10 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6 col-11 mb-4 mb-lg-0 mb-md-0">
-                    <h5 class="site-footer-title mb-3">Location</h5>
-
-                    <p class="text-white d-flex mt-3 mb-2">
-                        Silang Junction South, Tagaytay, Cavite, Philippines</p>
+                    <h5 class="site-footer-title mb-3">Ubicacion</h5>
 
                     <a class="link-fx-1 color-contrast-higher mt-3" href="#">
-                        <span>Our Maps</span>
+                        <span>Mapa</span>
                         <svg class="icon" viewBox="0 0 32 32" aria-hidden="true">
                             <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="16" cy="16" r="15.5"></circle>

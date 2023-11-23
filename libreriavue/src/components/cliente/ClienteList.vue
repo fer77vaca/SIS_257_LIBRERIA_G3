@@ -52,14 +52,14 @@ onMounted(() => {
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
-          <tr>
-            <th scope="col">N°</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">NIT</th>
-            <th scope="col">RazonSocial</th>
-            <th scope="col">Direccion</th>
-            <th scope="col">Acciones</th>
+          <tr style="background-color: black;">
+            <th scope="col" style="color: white;">N°</th>
+            <th scope="col" style="color: white;">Nombre</th>
+            <th scope="col" style="color: white;">Telefono</th>
+            <th scope="col" style="color: white;">NIT</th>
+            <th scope="col" style="color: white;">RazonSocial</th>
+            <th scope="col" style="color: white;">Direccion</th>
+            <th scope="col" style="color: white;">Acciones</th>
           </tr>
         </thead>
         <tbody>

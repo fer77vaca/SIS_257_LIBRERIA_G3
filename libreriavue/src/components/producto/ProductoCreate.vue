@@ -13,7 +13,7 @@ async function getCategorias() {
 onMounted(() => {
   getCategorias()
 })
-// -------------------------------
+
 var unidades = ref<Unidad[]>([])
 async function getUnidades() {
   unidades.value = await http.get("unidades").then((response) => response.data)

@@ -47,7 +47,7 @@ function goBack() {
     </div>
 
     <div class="row">
-      <form @submit.prevent="crearCliente()">
+      <form @submit.prevent="crearCliente()" >
         <div class="form-floating mb-3">
           <input type="string" class="form-control" v-model="nombre" placeholder="Nombre" required />
           <label for="nombre">Nombre</label>

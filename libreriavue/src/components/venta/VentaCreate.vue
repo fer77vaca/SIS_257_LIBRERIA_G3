@@ -62,6 +62,8 @@ function goBack() {
         <li class="breadcrumb-item active" aria-current="page">Crear Ventas</li>
       </ol>
     </nav>
+    <br>
+    <br>
     <div class="row">
       <h2>Crear Nueva Venta</h2>
     </div>

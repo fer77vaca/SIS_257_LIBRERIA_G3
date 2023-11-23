@@ -52,14 +52,14 @@ onMounted(() => {
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
-          <tr>
-            <th scope="col">N°</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Precio_Unitario</th> 
-            <th scope="col">Total</th> 
-            <th scope="col">Transaccion</th> 
-            <th scope="col">Nombre_Producto</th> 
-            <th scope="col">Acciones</th>
+          <tr style="background-color: black;">
+            <th scope="col" style="color: white;">N°</th>
+            <th scope="col" style="color: white;">Cantidad</th>
+            <th scope="col" style="color: white;">Precio_Unitario</th> 
+            <th scope="col" style="color: white;">Total</th> 
+            <th scope="col" style="color: white;">Transaccion</th> 
+            <th scope="col" style="color: white;">Nombre_Producto</th> 
+            <th scope="col" style="color: white;">Acciones</th>
           </tr>
         </thead>
         <tbody>

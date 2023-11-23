@@ -32,6 +32,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <br><br><br><br>
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -39,9 +40,6 @@ onMounted(() => {
         <li class="breadcrumb-item active" aria-current="page">Ventas</li>
       </ol>
     </nav>
-    <br>
-    <br>
-    <br>
 
     <div class="row">
       <h2>Lista de Ventas</h2>
@@ -55,13 +53,13 @@ onMounted(() => {
     <div class="table-responsive">
       <table class="table table-bordered">
         <thead>
-          <tr>
-            <th scope="col">N°</th>
-            <th scope="col">Transaccion</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Usuario</th>
-            <th scope="col">Cliente</th>
-            <th scope="col">Acciones</th>
+          <tr style="background-color: black;">
+            <th scope="col" style="color: white;">N°</th>
+            <th scope="col" style="color: white;">Transaccion</th>
+            <th scope="col" style="color: white;">Fecha</th>
+            <th scope="col" style="color: white;">Usuario</th>
+            <th scope="col" style="color: white;">Cliente</th>
+            <th scope="col" style="color: white;">Acciones</th>
           </tr>
         </thead>
         <tbody>

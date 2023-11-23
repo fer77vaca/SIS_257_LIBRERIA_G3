@@ -49,13 +49,13 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="table-responsive">
-      <table class="table table-bordered">
+    <div class="table-responsive" >
+      <table class="table table-bordered" >
         <thead>
-          <tr>
-            <th scope="col">N°</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">Acciones</th>
+          <tr style="background-color: black;">
+            <th scope="col" style="color: white;">N°</th>
+            <th scope="col" style="color: white;">Descripción</th>
+            <th scope="col" style="color: white;">Acciones</th>
           </tr>
         </thead>
         <tbody>

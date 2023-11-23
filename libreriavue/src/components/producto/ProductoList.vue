@@ -39,8 +39,6 @@ onMounted(() => {
 
 
 <template>
-  <!-- v-if="authStore.token" -->
-  <!--INICIA LA TABLA-->
   <div v-if="authStore.token">
     <div class="find-us">
       <div class="container">
@@ -55,11 +53,13 @@ onMounted(() => {
                   <li class="breadcrumb-item active" aria-current="page">Productos</li>
                 </ol>
               </nav>
-              <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Lista de Productos</h2>
+              <h2 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Lista de Productos
+              </h2>
               <div class="col-12">
               </div>
             </div>
-            <RouterLink class="btn btn-success" to="/productos/crear"><i class="fa fa-plus-circle"></i>Crear Nuevo</RouterLink>
+            <RouterLink  to="/productos/crear">Crear Nuevo
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -67,10 +67,9 @@ onMounted(() => {
     <br>
     <div class="container">
       <div class="table-responsive">
-        <table class="table table-dark table-striped" >
-          <!-- <table class="table table-bordered"> -->
+        <table class="table table-dark table-striped">
           <thead>
-            <tr>
+            <tr style="background-color: black;">
               <th scope="col">N°</th>
               <th scope="col">Categoría</th>
               <th scope="col">Código</th>
@@ -92,9 +91,13 @@ onMounted(() => {
               <td>{{ producto.precio }}</td>
               <td>{{ producto.existenciaProducto }}</td>
               <td>
-                <button class="btn btn-primary btn-sm" @click="toEdit(producto.id)">Editar<i class="fa fa-edit"></i></button> |
-                <button class="btn btn-danger btn-sm" @click="toDelete(producto.id)">Borrar<i class="fa fa-trash"></i></button>
-              </td>
+              <button class="btn text-success" @click="toEdit(producto.id)">
+                <font-awesome-icon icon="fa-solid fa-edit" />
+              </button>
+              <button class="btn text-danger" @click="toDelete(producto.id)">
+                <font-awesome-icon icon="fa-solid fa-trash" />
+              </button>
+            </td>
             </tr>
 
           </tbody>
@@ -102,9 +105,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <!--FIN TABLA--> 
 
-  <!-- INICIA LA VISTA DE PRODUCTOS CON IMAGENES -->
 
 
   <div class="find-us">
@@ -120,46 +121,44 @@ onMounted(() => {
   </div>
 
 
-<!--Inicio de Url Producto-->
 
-<div class="container">
-  <div class="row">
-    <div v-for="p in productos" class="col-md-4">
-      <div class="product-item">
-        <a href="#">
-          <img :src="p.urlImagen" alt="Producto" style="width: 232px; height: 232px; border: 1px solid #808080; border-radius: 10px;">
-        </a>
 
-        <div v-if="p.existenciaProducto >= 1">
-          <div class="down-content">
-            <a href="/detalle">
-              <h4>{{ p.descripcion }}</h4>
-            </a>
-            <h6>Bs{{ p.precio }}</h6>
-            <p>{{ p.unidad.descripcion }}</p>
-            <h7>DISPONIBLE</h7>
-            <br><br><br>
+  <div class="container">
+    <div class="row">
+      <div v-for="p in productos" class="col-md-4">
+        <div class="product-item">
+          <a href="#">
+            <img :src="p.urlImagen" alt="Producto"
+              style="width: 232px; height: 232px; border: 1px solid #808080; border-radius: 10px;">
+          </a>
+
+          <div v-if="p.existenciaProducto >= 1">
+            <div class="down-content">
+              <a href="/detalle">
+                <h4>{{ p.descripcion }}</h4>
+              </a>
+              <h6>Bs{{ p.precio }}</h6>
+              <p>{{ p.unidad.descripcion }}</p>
+              <h7>DISPONIBLE</h7>
+              <br><br><br>
+            </div>
           </div>
-        </div>
 
-        <div v-else>
-          <div class="down-content">
-            <a href="/detalle">
-              <h4><del> {{ p.descripcion }}</del></h4>
-            </a>
-            <h6>Bs{{ p.precio }}</h6>
-            <p></p>
-            <h3>ARTÍCULO</h3>
-            <h3>AGOTADO</h3>
+          <div v-else>
+            <div class="down-content">
+              <a href="/detalle">
+                <h4><del> {{ p.descripcion }}</del></h4>
+              </a>
+              <h6>Bs{{ p.precio }}</h6>
+              <p></p>
+              <h4>ARTÍCULO</h4>
+              <h4>AGOTADO</h4>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-
-<!--Fin de Url Producto-->
 </template>
 
 <style></style>
