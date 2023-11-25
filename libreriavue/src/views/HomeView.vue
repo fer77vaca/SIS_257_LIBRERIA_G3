@@ -1,9 +1,8 @@
 
 <script setup lang="ts">
-import type { Producto } from '@/models/producto';
-import { onMounted, ref } from 'vue'
-import http from '@/plugins/axios' 
-import router from '@/router' 
+import { ref } from 'vue';
+
+const pr = ref([]);
 
 
 </script>
@@ -20,7 +19,7 @@ import router from '@/router'
 
                     <h1 class="text-white mb-5">Libreria</h1>
 
-                    <a class="btn custom-btn smoothscroll" href="/productos">Vamos a empezar</a>
+                    <p><a href="col-md-4">VAMOS A EMPEZAR</a>.</p>
                 </div>
 
                 <div class="col-lg-12 col-12 mt-auto d-flex flex-column flex-lg-row text-center">
@@ -72,9 +71,100 @@ import router from '@/router'
         </div>
     </section>
 
-    
+    <!--Inicio De Imagenes-->
+    <div class="find-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <h2 style="display: flex; justify-content: center;">VISTA DE CATALOGOS</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin:  60px; justify-content: space-between;">
+                <div class="col-md-4">
+                    <p style="font-size: 50px; color: black;">ACRILEX</p>
+                    <img src="@/assets/img/Acrilex.jpg" alt="Product Image" class="product-image">
+                </div>
+                <div class="col-md-4">
+                    <p style="font-size: 50px; color: black;">BOLIGRAFOS</p>
+                    <img src="@/assets/img/Boligrafos.jpg" alt="Product Image" class="product-image">
+                </div>
+                <div class="col-md-4">
+                    <p style="font-size: 50px; color: black;">BORRADORES</p>
+                    <img src="@/assets/img/Borrador.jpg" alt="Product Image" class="product-image">
+                </div>
+                <div class="col-md-4">
+                    <p style="font-size: 50px; color: black;">COLORES</p>
+                    <img src="@/assets/img/Colores.jpg" alt="Product Image" class="product-image">
+                </div>
+                <div class="col-md-4">
+                    <p style="font-size: 50px; color: black;">EMBALAJES</p>
+                    <img src="@/assets/img/Embalaje.jpg" alt="Product Image" class="product-image">
+                </div>
+                <div class="col-md-4">
+                    <p style="font-size: 50px; color: black;">ESTUCHES</p>
+                    <img src="@/assets/img/Estuche.jpg" alt="Product Image" class="product-image">
+                </div>
+                <div class="col-md-4">
+                    <p style="font-size: 50px; color: black;">PAPELERIA</p>
+                    <img src="@/assets/img/Papeleria.jpeg" alt="Product Image" class="product-image">
+                </div>
+                <div class="col-md-4">
+                    <p style="font-size: 50px; color: black;">REGLAS</p>
+                    <img src="@/assets/img/Reglas.jpg" alt="Product Image" class="product-image">
+                </div>
+                <div class="col-md-4">
+                    <p style="font-size: 50px; color: black;">RESALTADORES</p>
+                    <img src="@/assets/img/Resaltador.jpg" alt="Product Image" class="product-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Fin De Imagenes-->
 </template>
 
 
 
-<style ></style>
+<style scoped>
+.find-us {
+    background-color: #ffffff;
+    padding: 40px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-image:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+    .col-md-4 {
+        width: 100%;
+        margin-bottom: 0px;
+    }
+}
+</style>
+
+
+
+
+
+
+
+

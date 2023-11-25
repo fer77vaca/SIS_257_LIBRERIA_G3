@@ -131,14 +131,13 @@ onMounted(() => {
             <img :src="p.urlImagen" alt="Producto"
               style="width: 232px; height: 232px; border: 1px solid #808080; border-radius: 10px;">
           </a>
-
-          <div v-if="p.existenciaProducto >= 1">
+          <div v-if="p.existenciaProducto >= 1" >
             <div class="down-content">
-              <a href="/detalle">
+              <a href="/detalles/crear">
                 <h4>{{ p.descripcion }}</h4>
               </a>
               <h6>Bs{{ p.precio }}</h6>
-              <p>{{ p.unidad.descripcion }}</p>
+              <p >{{ p.unidad.descripcion }}</p>
               <h7>DISPONIBLE</h7>
               <br><br><br>
             </div>
@@ -146,8 +145,8 @@ onMounted(() => {
 
           <div v-else>
             <div class="down-content">
-              <a href="/detalle">
-                <h4><del> {{ p.descripcion }}</del></h4>
+              <a href="/detalles/crear">
+                <h4 ><del> {{ p.descripcion }}</del></h4>
               </a>
               <h6>Bs{{ p.precio }}</h6>
               <p></p>
