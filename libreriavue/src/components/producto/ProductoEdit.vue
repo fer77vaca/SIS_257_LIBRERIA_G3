@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import {  onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
 import type { Categoria } from '@/models/categoria';
@@ -35,7 +35,6 @@ const idUnidad = ref('')
 const precio = ref(0)
 const existenciaProducto = ref(0)
 const urlImagen = ref('')
-const total = computed(() => precio.value * existenciaProducto.value)
 const id = router.currentRoute.value.params['id']
 
 async function editarProducto() {
@@ -134,11 +133,6 @@ onMounted(() => {
                 <div class="form-floating">
                     <input type="text" class="form-control" v-model="urlImagen" placeholder="imagen" required />
                     <label for="imagen">URL Imagen</label>
-                </div>
-
-                <div class="form-floating">
-                    <input type="number" class="form-control" v-model="total" placeholder="Total" required readonly />
-                    <label for="Total">Total</label>
                 </div>
 
                 <div class="text-center mt-3">

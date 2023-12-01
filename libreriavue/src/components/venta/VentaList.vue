@@ -3,7 +3,7 @@ import type { Venta } from '@/models/venta';
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios' 
 import router from '@/router' 
-
+import { format } from 'date-fns';
 const props = defineProps<{
   ENDPOINT_API: string
 }>();
@@ -66,7 +66,7 @@ onMounted(() => {
           <tr v-for="(venta, index) in ventas" :key="venta.id">
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ venta.transaccion }}</td>
-            <td>{{ venta.fecha }}</td>
+            <td>{{ format(new Date(venta.fecha), "dd/MM/yyyy") }}</td>
             <td>{{ venta.usuario.usuario }}</td>
             <td>{{ venta.cliente.nombre }}</td>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import {computed, onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
 import type { Producto } from '@/models/producto';
@@ -31,9 +31,9 @@ const props = defineProps<{
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const cantidad = ref('')
 const precioUnitario = ref('')
-const total = ref('')
 const idVenta = ref('')
 const idProducto = ref('')
+const total = computed(() => cantidad.value * precioUnitario.value)
 
 async function crearDetalle() {
   await http
