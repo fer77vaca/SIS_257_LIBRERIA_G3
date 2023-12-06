@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Detalle } from '@/models/detalle'; 
+// import type { Venta } from '@/models/venta'; 
 import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios' 
 import router from '@/router' 
@@ -68,7 +69,7 @@ onMounted(() => {
             <td>{{ detalle.cantidad }}</td> 
             <td>{{ detalle.precioUnitario }}</td>
             <td>{{ detalle.total }}</td>
-            <td>{{ detalle.idVenta }}</td>
+            <td>{{ detalle.venta.transaccion }}</td>
             <td>{{ detalle.producto.descripcion }}</td>
             <td>
               <button class="btn text-success" @click="toEdit(detalle.id)">

@@ -9,19 +9,14 @@ const props = defineProps<{
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
 const nombre = ref('')
-const telefono = ref('')
 const nit = ref('')
-const razonSocial = ref('')
-const direccion = ref('')
+
 
 async function crearCliente() {
   await http
     .post(ENDPOINT, {
       nombre: nombre.value,
-      telefono: telefono.value,
       nit: nit.value,
-      razonSocial: razonSocial.value,
-      direccion: direccion.value
     })
     .then(() => router.push('/clientes'))
 }
@@ -49,25 +44,15 @@ function goBack() {
     <div class="row">
       <form @submit.prevent="crearCliente()" >
         <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="nombre" placeholder="Nombre" required />
+          <input type="text" class="form-control" v-model="nombre" placeholder="Nombre" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+"
+            title="No se Puede Ingresar Numeros" required />
           <label for="nombre">Nombre</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="number" class="form-control" v-model="telefono" placeholder="Teléfono" required />
-          <label for="telefono">Teléfono</label>
         </div>
         <div class="form-floating mb-3">
           <input type="number" class="form-control" v-model="nit" placeholder="NIT" required />
           <label for="nit">NIT</label>
         </div>
-        <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="razonSocial" placeholder="Razón Social" required />
-          <label for="razonSocial">Razón Social</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="string" class="form-control" v-model="direccion" placeholder="Dirección" required />
-          <label for="direccion">Dirección</label>
-        </div>
+       
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">
             <font-awesome-icon icon="fa-solid fa-floppy-disk" /> Crear

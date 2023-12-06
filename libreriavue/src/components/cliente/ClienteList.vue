@@ -55,10 +55,7 @@ onMounted(() => {
           <tr style="background-color: black;">
             <th scope="col" style="color: white;">N°</th>
             <th scope="col" style="color: white;">Nombre</th>
-            <th scope="col" style="color: white;">Telefono</th>
             <th scope="col" style="color: white;">NIT</th>
-            <th scope="col" style="color: white;">RazonSocial</th>
-            <th scope="col" style="color: white;">Direccion</th>
             <th scope="col" style="color: white;">Acciones</th>
           </tr>
         </thead>
@@ -66,11 +63,7 @@ onMounted(() => {
           <tr v-for="(cliente, index) in clientes" :key="cliente.id">
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ cliente.nombre }}</td>
-            <td>{{ cliente.telefono }}</td>
             <td>{{ cliente.nit }}</td>
-            <td>{{ cliente.razonSocial }}</td>
-            <td>{{ cliente.direccion }}</td>
-          
             <td>
               <button class="btn text-success" @click="toEdit(cliente.id)">
                 <font-awesome-icon icon="fa-solid fa-edit" />
