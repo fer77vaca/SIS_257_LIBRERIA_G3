@@ -59,9 +59,9 @@
                             <a href="#" class="site-footer-link">Inicio</a>
                         </li>
 
-                        <li class="site-footer-link-item">
+                        <!-- <li class="site-footer-link-item">
                             <a href="#" class="site-footer-link">Contactos</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
 
@@ -87,7 +87,7 @@
                         </a>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-11 mb-4 mb-lg-0 mb-md-0">
+                <!-- <div class="col-lg-3 col-md-6 col-11 mb-4 mb-lg-0 mb-md-0">
                     <h5 class="site-footer-title mb-3">Ubicacion</h5>
 
                     <a class="link-fx-1 color-contrast-higher mt-3" href="#">
@@ -100,7 +100,7 @@
                             </g>
                         </svg>
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -109,22 +109,22 @@
                 <div class="row">
 
                     <div class="col-lg-3 col-12 mt-5">
-                        <p class="copyright-text">Copyright © 2023 Libreria Company</p>
+                        <p class="copyright-text">Derechos reservados Libreria_G3</p>
                        
                     </div>
 
                     <div class="col-lg-8 col-12 mt-lg-5">
                         <ul class="site-footer-links">
                             <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Terms &amp; Conditions</a>
+                                <a href="#" class="site-footer-link">Servicio &amp; Calidad</a>
                             </li>
 
                             <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Politica de Privacidad</a>
+                                <a href="#" class="site-footer-link">Agradecemos</a>
                             </li>
 
                             <li class="site-footer-link-item">
-                                <a href="#" class="site-footer-link">Tu Retroalimentacion</a>
+                                <a href="#" class="site-footer-link">Su Preferencia</a>
                             </li>
                         </ul>
                     </div>
