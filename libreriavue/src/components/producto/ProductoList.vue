@@ -5,11 +5,15 @@ import { onMounted, ref } from 'vue'
 import http from '@/plugins/axios'
 import router from '@/router'
 import { useAuthStore } from "@/stores/index";
+
+import Carrito from './components/Carrito.vue';
+
 const authStore = useAuthStore();
 
-const props = defineProps<{
-  ENDPOINT_API: string
-}>()
+const props = defineProps({
+  ENDPOINT_API: String
+})
+
 
 const ENDPOINT = props.ENDPOINT_API ?? ''
 var productos = ref<Producto[]>([])
@@ -33,6 +37,10 @@ async function toDelete(id: number) {
 onMounted(() => {
   getProductos()
 })
+/*
+watch(producto.precio,(antes, ahora)=>{
+  console.log(antes, ahora);
+})*/
 
 </script>
 
@@ -154,10 +162,22 @@ onMounted(() => {
               <h4>AGOTADO</h4>
             </div>
           </div>
+          <div>
+            <button>Añadir-Carrito</button>
+          </div>
+          <br>
+          <br>
         </div>
       </div>
     </div>
   </div>
+
+  
 </template>
 
-<style></style>
+<style>
+
+del{
+  color: red;
+}
+</style>
